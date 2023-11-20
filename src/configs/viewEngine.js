@@ -21,15 +21,19 @@ let configViewEngine = (app) => {
   hbs.registerHelper("pass_json", function (context) {
     return JSON.stringify(context);
   });
-  hbs.registerHelper("test_helper", function () {
-    return "Test Helper Worked!";
-  });
 
   hbs.registerHelper("check", function (variable, options) {
     if (variable && variable.length > 0) {
       return options.fn(this);
     } else {
       return options.inverse(this);
+    }
+  });
+  hbs.registerHelper("cortarTexto", function (context) {
+    if (Array.isArray(context) && context.length > 0) {
+      return context.join(" ");
+    } else {
+      return "";
     }
   });
 };
