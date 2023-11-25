@@ -1,0 +1,11 @@
+<script>
+  $(document).ready(function() { $("#form").submit(function(event) {
+  event.preventDefault(); var formData = { nombres: $("#nombres").val(),
+  paterno: $("#paterno").val(), materno: $("#materno").val(), email:
+  $("#email").val(), telefono: $("#telefono").val(), nombre_comercial:
+  $("#nombre_comercial").val(), rfc: $("#rfc").val() }; console.log(formData);
+  /* $.ajax({ url: "/update", type: "POST", data: formData, success:
+  function(res){ console.log("Server response: ", res); // Handle the response
+  as needed }, error: function(err){ console.error("Error: ", err); // Handle
+  errors if any } }); */ }); });
+</script>

@@ -44,13 +44,14 @@ let findUserById = (id) => {
   return new Promise((resolve, reject) => {
     try {
       DBConnection.query(
-        " SELECT * FROM `users` WHERE `id` = ?  ",
+        //" SELECT * FROM `users` WHERE `id` = ?  ",
+        "select * from users u  inner join empresas e on e.id_usuario  = u.id where id = ?",
         id,
         function (err, rows) {
           if (err) {
             reject(err);
           }
-          let user = rows[0];
+          let user = rows;
           resolve(user);
         }
       );
