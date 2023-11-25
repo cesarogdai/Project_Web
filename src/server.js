@@ -1,27 +1,30 @@
-require('dotenv').config();
+require("dotenv").config();
 import express from "express";
 import configViewEngine from "./configs/viewEngine";
 import initWebRoutes from "./routes/web";
 import bodyParser from "body-parser";
-import cookieParser from 'cookie-parser';
+import cookieParser from "cookie-parser";
 import session from "express-session";
 import connectFlash from "connect-flash";
 import passport from "passport";
+const path = require("path");
 
 let app = express();
 
 //use cookie parser
-app.use(cookieParser('secret'));
+app.use(cookieParser("secret"));
 
 //config session
-app.use(session({
-    secret: 'secret',
+app.use(
+  session({
+    secret: "secret",
     resave: true,
     saveUninitialized: false,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24 // 86400000 1 day
-    }
-}));
+      maxAge: 1000 * 60 * 60 * 24, // 86400000 1 day
+    },
+  })
+);
 
 // Enable body parser post data
 app.use(bodyParser.json());
@@ -38,7 +41,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // init all web routes
+
 initWebRoutes(app);
+app.use("/websites", express.static(path.join(__dirname, "websites")));
 
 let port = process.env.PORT || 8080;
-app.listen(port, () => console.log(`Building a login system with NodeJS is running on port ${port}!`));
+//app.listen(port, () => console.log(`Project is working on: ${port}!`));
+app.listen(port, "192.168.100.48", () =>
+  console.log(`Project is working on: ${port}!`)
+);

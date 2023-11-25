@@ -11,14 +11,16 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-  </head>
+  </head>{{> nav_reg_log}}
   <body>
     <div class="container">
       <div class="container">
         <div class="row mt-5">
-          <div class="col-7 login-left">
+          <div class="col-5 mt-2 text-center">
+            <label for="brand">Algunos de nuestros clientes.</label>
+            <img src="" alt="brand-img" id="brandImg"/>
           </div>
-          <div class="col-5 mt-2">
+          <div class="col-7 mt-2">
             <div>
               {{#check errors}}
                 <div class="alert alert-danger">
@@ -65,5 +67,13 @@
         </div>
       </div>
     </div>
+      <script>
+    $(document).ready(function() { let urls = [ '../images/nike_logo.webp',
+    '../images/adidas_logo.png', '../images/cuidado_logo.png',
+    '../images/underarmour_logo.webp' ]; let currentIndex = 0; function
+    changeImage() { $("#brandImg").attr("src", urls[currentIndex]); currentIndex
+    = (currentIndex + 1) % urls.length; } changeImage();
+    setInterval(changeImage, 3000); });
+  </script>
   </body>
 </html>

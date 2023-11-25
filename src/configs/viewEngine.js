@@ -8,6 +8,9 @@ const partialsPath = __dirname + "/../views/partials"; // Adjust the path based 
 const navbar = hbs.compile(
   fs.readFileSync(partialsPath + "/navbar.hbs").toString("utf-8")
 );
+const navbar_register_login = hbs.compile(
+  fs.readFileSync(partialsPath + "/navbar-register-login.hbs").toString("utf-8")
+);
 
 let configViewEngine = (app) => {
   app.use(express.static("./src/public"));
@@ -15,10 +18,8 @@ let configViewEngine = (app) => {
   app.set("views", "./src/views");
 
   hbs.registerPartial("navbar", navbar);
-  /*hbs.registerHelper("pass_json", function (context) {
-    return JSON.stringify(context);
-  });*/
-  hbs.registerHelper("pass_json", function (context) {
+  hbs.registerPartial("nav_reg_log", navbar_register_login);
+  hbs.registerHelper("stringify", function (context) {
     return JSON.stringify(context);
   });
 
@@ -29,6 +30,29 @@ let configViewEngine = (app) => {
       return options.inverse(this);
     }
   });
+  hbs.registerHelper("stringify", function (obj) {
+    return JSON.stringify(obj);
+  });
+  hbs.registerHelper("obj_string", function (obj) {
+    if (typeof obj === "object") {
+      return JSON.stringify(obj);
+    } else {
+      return obj;
+    }
+  });
+  hbs.registerHelper("print_str", function (obj, property) {
+    if (
+      obj &&
+      typeof obj === "object" &&
+      property &&
+      obj.hasOwnProperty(property)
+    ) {
+      return obj[property];
+    } else {
+      return "";
+    }
+  });
+
   hbs.registerHelper("cortarTexto", function (context) {
     if (Array.isArray(context) && context.length > 0) {
       return context.join(" ");
