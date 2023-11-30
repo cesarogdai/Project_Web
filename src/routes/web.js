@@ -1,4 +1,5 @@
 import express from "express";
+import mainPageController from "../controllers/mainPageController";
 import homePageController from "../controllers/homePageController";
 import registerController from "../controllers/registerController";
 import loginController from "../controllers/loginController";
@@ -7,6 +8,9 @@ import passport from "passport";
 import initPassportLocal from "../controllers/passportLocalController";
 import userProfileController from "../controllers/userProfileController";
 import companyController from "../controllers/companyController";
+import explanationPageController from "../controllers/explanationPageController";
+import contactController from "../controllers/contactController";
+import analiticsController from "../controllers/analiticsController";
 const multer = require("multer");
 
 const storage = multer.memoryStorage();
@@ -17,11 +21,24 @@ initPassportLocal();
 let router = express.Router();
 
 let initWebRoutes = (app) => {
-  router.get(
+  /*router.get(
     "/",
     loginController.checkLoggedIn,
     homePageController.handleHelloWorld
+  );*/
+  //Logged IN
+  router.get(
+    "/home",
+    loginController.checkLoggedIn,
+    homePageController.handleHelloWorld
   );
+  //Main Page Controller
+  router.get("/", mainPageController.showMainPage);
+  router.get("/getImages", mainPageController.getImageUrls);
+
+  //Explanation Page Controller
+  router.get("/explanation", explanationPageController.showExplanation);
+
   router.get(
     "/login",
     loginController.checkLoggedOut,
@@ -30,7 +47,7 @@ let initWebRoutes = (app) => {
   router.post(
     "/login",
     passport.authenticate("local", {
-      successRedirect: "/",
+      successRedirect: "/home",
       failureRedirect: "/login",
       successFlash: true,
       failureFlash: true,
@@ -57,6 +74,14 @@ let initWebRoutes = (app) => {
     upload.single("image"),
     companyController.handleFileUpload
   );
+
+  //Contact Route
+  router.get("/contacto", contactController.showContactPage);
+  router.post("/submitContact", contactController.sendEmail);
+
+  //Analitics router
+  router.get("/analitics", analiticsController.getAnalytics);
+
   return app.use("/", router);
 };
 module.exports = initWebRoutes;

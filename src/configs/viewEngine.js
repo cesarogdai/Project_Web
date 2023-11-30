@@ -40,6 +40,9 @@ let configViewEngine = (app) => {
       return obj;
     }
   });
+  hbs.registerHelper("parseJSON", function (obj) {
+    return JSON.parse(obj);
+  });
   hbs.registerHelper("print_str", function (obj, property) {
     if (
       obj &&

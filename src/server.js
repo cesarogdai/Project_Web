@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import connectFlash from "connect-flash";
 import passport from "passport";
+
 const path = require("path");
 
 let app = express();
@@ -43,10 +44,16 @@ app.use(passport.session());
 // init all web routes
 
 initWebRoutes(app);
+
+//websites directory
 app.use("/websites", express.static(path.join(__dirname, "websites")));
+//public directory
+app.use("/public", express.static(path.join(__dirname, "public")));
 
 let port = process.env.PORT || 8080;
-//app.listen(port, () => console.log(`Project is working on: ${port}!`));
-app.listen(port, "192.168.100.48", () =>
+app.listen(port, () => console.log(`Project is working on: ${port}!`));
+
+//LOCAL LAN
+/*app.listen(port, "192.168.100.48", () =>
   console.log(`Project is working on: ${port}!`)
-);
+);*/
