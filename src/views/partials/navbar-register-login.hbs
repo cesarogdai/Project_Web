@@ -8,47 +8,85 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link
+      href="https://fonts.googleapis.com/css?family=Recursive"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
     <style>
-      body { background-color: #f8f9fa; } .navbar { background-color: #343a40
-      !important; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); } .navbar-brand {
-      color: #ffc107 !important; font-weight: bold; } .navbar-brand:hover {
-      color: #ffca28 !important; } .navbar-nav .nav-link { color: #ffffff
-      !important; } .navbar-nav .nav-link:hover { color: #ffca28 !important; }
+      .navbar { background-color: #fff !important; padding: 0; } .navbar-brand {
+      color: #000 !important; font-family: 'Recursive'; font-size: 44px; }
+      .nav-link { color: #000 !important; font-family: 'Poppins' !important; }
+      .nav-link:hover { font-weight: bold; }
     </style>
     <title></title>
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="">Company Name</a>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+      <a class="navbar-brand title" href="/" style="margin-left:5px;">ZEMA</a>
       <button
         class="navbar-toggler"
         type="button"
         data-toggle="collapse"
-        data-target="#navbarResponsive"
-        aria-controls="navbarResponsive"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/about">Contacto</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Iniciar Sesión</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/register">Regístrate</a>
-          </li>
-        </ul>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav mx-auto">
+          <a class="nav-link px-5 active" href="/">Quienes Somos</a>
+          <a class="nav-link px-5" href="/explanation">Como Funciona</a>
+          <a class="nav-link px-5" href="/services">Servicios</a>
+          <a class="nav-link px-5" href="/contacto">Contacto</a>
+        </div>
+        <div class="navbar-nav mx-auto">
+          <a class="nav-link px-5" href="/login">Iniciar Sesión</a>
+          <a class="nav-link px-5" href="/register">Registrate</a>
+        </div>
       </div>
     </nav>
-
-    <!-- Your content goes here -->
-
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
