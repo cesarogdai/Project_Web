@@ -1,0 +1,2 @@
+On contact form:
+When the button is clicked display, a loading gif
