@@ -1,4 +1,4 @@
-import DBConnection from "../configs/DBConnection";
+import DBConnection from "../configs/DBConnection.js";
 let getUserSettings = (req, res) => {
   if (req.isAuthenticated()) {
     return res.render("user", { user: req.user });
